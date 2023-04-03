@@ -1,5 +1,4 @@
 from quart import Quart, render_template, request
-from dotenv import load_dotenv
 import requests
 import os
 
@@ -13,7 +12,7 @@ load_dotenv()
 async def home():
     if request.method == "POST":
         form = await request.form
-        api_url = URL+os.getenv("API_KEY")+"&q="+form['query']+"&image_type=photo&pretty=true"
+        api_url = URL+process.env.API_KEY+"&q="+form['query']+"&image_type=photo&pretty=true"
         res = requests.get(api_url)
         imgs = res.json()["hits"]
         return await render_template("home.html", imgs=imgs)
