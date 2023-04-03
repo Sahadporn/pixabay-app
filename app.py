@@ -1,12 +1,9 @@
 from quart import Quart, render_template, request
 import requests
-import os
 
 app = Quart(__name__, template_folder='template')
 
 URL = "https://pixabay.com/api/?key="
-
-load_dotenv()
 
 @app.route("/", methods=["GET", "POST"])
 async def home():
