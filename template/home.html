@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="header">
+      <h3>Images provided by Pixabay</h3>
+
+      <form method="POST">
+        <input type="text" name="query" placeholder="Search here" />
+        <br />
+        <button type="submit">Search</button>
+      </form>
+    </div>
+    <div id="content">
+      {% for img in imgs %}
+      <img src="{{img['largeImageURL']}}" />
+      <p>Credit: {{img['user']}}</p>
+      {% else %}
+      <p>No image</p>
+      {% endfor %}
+    </div>
+  </body>
+  <style>
+    body {
+      margin: 0;
+      font-family: monospace;
+      color: rgb(133, 35, 35);
+      /* background: rgb(238, 174, 202);
+      background: radial-gradient(
+        circle,
+        rgba(238, 174, 202, 1) 0%,
+        rgba(148, 187, 233, 1) 100%
+      ); */
+      background: linear-gradient(#ffc371, #ff5f6d);
+    }
+    #header {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(#ff5f6d, #ffc371);
+      padding: 10%;
+    }
+    form {
+      display: inline-block;
+      width: 100%;
+    }
+    input[type="text"] {
+      font-family: monospace;
+      width: 80%;
+      margin: 1%;
+      height: 40px;
+      border-radius: 20px;
+      border-width: 0;
+      padding: 2%;
+    }
+    button {
+      padding: 2%;
+      text-decoration: none;
+      background: white;
+      border-radius: 20px;
+      border-width: 0;
+      font-family: monospace;
+    }
+    #content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: #ffc371;
+    }
+    img {
+        max-width: 50%;
+        border-radius: 20px;
+    }
+  </style>
+</html>
